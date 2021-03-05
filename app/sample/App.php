@@ -14,11 +14,8 @@ class App
      */
     public function boot()
     {
-        // 在框架启动时运行的内容
-
         // 模版公共数据
         $this->loadViewShareData();
-
     }
 
     // 注入视图共享数据 20210104120428
@@ -37,13 +34,14 @@ class App
             // \APP_ROOT.'/router/appRouter2.php',//项目定义的路由2
         ];
      * 
+     * 注意：当 getAppRouters()返回[]时，表示不使用路由 20210305125040
      * chy 20210104114856
      */
-    public function getAppRouters()
+    public function getAppRouters() :array
     {
         return [
             \DOC_ROOT.'/app/route.php',//公共路由
-            // \APP_ROOT.'/routes/web.php',//项目路由
+            \APP_ROOT.'/routes/myroute.php',//项目路由
         ];
     }
 

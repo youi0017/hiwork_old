@@ -2,9 +2,6 @@
     "name": "chy/hiwork",
     "description": "hiwork, a high performance php framework",
     "type": "project",
-    "require-dev": {
-        "php": "^7.2"
-    },
     "authors": [{
         "name": "youi0017",
         "email": "chujiaye@foxmail.com"

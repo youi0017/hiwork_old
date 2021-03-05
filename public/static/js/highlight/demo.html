@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>highlight-demo</title>
+		<link rel="stylesheet" type="text/css" href="./highlight.min.css"/>
+		
+	</head>
+	<body>
+		
+		
+		<pre><code  class="html">//同vue的组件写法
+		&lt;template&gt;
+		    &lt;view class="myh-header" &gt;
+		        &lt;view&gt;
+		            &lt;view&gt;{{txt}}&lt;/view&gt;
+		        &lt;/view&gt;
+		    &lt;/view&gt;
+		&lt;/template&gt;
+		
+		&lt;script&gt;
+		    export default {
+		        name:"myh-header",
+		        props:{
+		            txt: {
+		                type: String,
+		                default: "myohall-header文字"
+		            }
+		        }
+		    }
+		&lt;/script&gt;
+		
+		&lt;style scoped&gt;
+		.myh-header{
+		    height: 30px;
+		    background-color: #F0F0F0;
+		}
+		&lt;/style&gt;
+		</code></pre>
+
+		<h4 id="3.+%E5%9C%A8%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6">3. 在全局注册组件</h4>
+		<p>在 根目录的 main.js 文件中加入如下内容：</p>
+		<pre><code>// 导入自定义的全局组件 components
+		import myhHeader from './components/myh/myh-header.vue'
+		import myhFooter from './components/myh/myh-footer.vue'
+		
+		
+		// 注册为全局组件
+		Vue.component("myh-header",myhHeader)
+		Vue.component("myh-footer",myhFooter)
+		</code></pre>
+
+		<h4 id="4.+%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E4%BD%BF%E7%94%A8">4. 在页面中使用</h4>
+		
+		<p>在页面中需要使用组件的地方，直接使用：</p>
+		<pre><code>&lt;template&gt;
+		    &lt;view class="container"&gt;    
+		        &lt;myh-header txt="news-测试header"&gt;&lt;/myh-header&gt;
+		
+		        &lt;view&gt;
+		            &lt;text&gt;主体内容： hellow vithen&lt;/text&gt;
+		        &lt;/view&gt;
+		
+		        &lt;myh-footer txt="news-测试footer"&gt;&lt;/myh-footer&gt;
+		    &lt;/view&gt;
+		&lt;/template&gt;
+		</code></pre>
+
+		
+		<h4 id="5.+%E7%BB%84%E4%BB%B6%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C">5. 组件局部注册</h4>
+		
+		<pre><code> &lt;script&gt;
+		        // 组件局部注册
+		        import myhFooter from "./components/myh/myh-footer.vue"
+		        export default {
+		            components:{
+		                myhFooter
+		            },
+		            data() {
+		                return {
+		                    txt: 'vithen-footer',
+		                    list: []
+		                }
+		            },
+		            onLoad() {
+		            },
+		             methods: {
+		            }
+		        }
+		&lt;/script&gt;
+		
+		
+		
+		&lt;template&gt;
+		    &lt;view class="container"&gt;    
+		        &lt;myh-footer :txt="txt"&gt;&lt;/myh-footer&gt;
+		    &lt;/view&gt;
+		&lt;/template&gt;
+		</code></pre> 
+		
+		
+		<script type="text/javascript" src="./highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+			
+	</body>
+</html>

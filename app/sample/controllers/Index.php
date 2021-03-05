@@ -4,15 +4,16 @@
 
 class Index
 {
-    public function index()
+    public function ceshi()
     {
-        // error('this is index');
-        return '2121,欢迎来到 HiWork, 您所看到是【'.\env('APP_NAME').'项目】的主页面';
+        logger()->info('被你发现了， 嘿嘿');
+
+        return '欢迎来到 HiWork, 您所看到是【'.\env('APP_NAME').'项目】的普通测试页面';
     }
 
-    public static function show()
+    public static function ceshiStatic()
     {
-        return '2121,欢迎来到 HiWork, 您所看到是【'.\env('APP_NAME').'项目】的"静态"主页面';
+        return '欢迎来到 HiWork, 您所看到是【'.\env('APP_NAME').'项目】的"静态"测试页面';
     }
 
     // 使用中间件：模似车辆限行
