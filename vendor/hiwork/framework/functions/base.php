@@ -44,12 +44,24 @@ function vendor($packName) {
 function env($key, $val=null)
 {
     if(\is_null($val)){
-        if(!isset($_ENV['APP_NAME']))
-            $_ENV = load(DOC_ROOT.'/.env'); 
-        return $_ENV[$key] ?? null;
+
+        if(\getenv('APP_NAME')==false){
+            $env = load(DOC_ROOT.'/.env');
+            // var_dump(\getenv('APP_NAME'), $env);//exit;
+            foreach($env as $k =>$v){
+                \putenv($k.'='.$v);
+            }
+        }
+
+        return \getenv($key);        
+
+        // if(!isset($_ENV['APP_NAME']))
+        //     $_ENV = load(DOC_ROOT.'/.env'); 
+        // return $_ENV[$key] ?? null;
     }
     else{
-        $_ENV[$key]=$val;
+        \putenv($key.'='.$val);
+        // $_ENV[$key]=$val;
     }
 }
 

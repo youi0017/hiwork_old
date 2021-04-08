@@ -5,6 +5,10 @@ use \hw\Request;
 /* 
  * 路由解析与处理
  * chy 20201231112516
+ * 
+ * [更新-chy-20210404115053] 
+    parseRoute()中env('path', array)更改为env('path', string)
+
  */
 
 class Route
@@ -58,7 +62,7 @@ class Route
 
         //3. 解析为uriPath
         $uriArr = explode('/', \rawurldecode($uri));
-        \env('path', $uriArr);
+        // \env('path', $uriArr);
 
 
         if(empty($uriArr[1])){
@@ -126,9 +130,8 @@ class Route
         $uri = \rawurldecode($uri);
 
         // var_dump($uri);exit;
-        // 将路径信息以数组写入环境变量
-        \env('path', \explode('/', $uri));
-        // var_dump(env('path'));exit;
+        // 将路径信息(字串)写入环境变量
+        \env('uri', $uri);
 
         // 4.得到路由的解析结果
         $routeInfo = $dispatcher->dispatch($httpMethod, $uri);

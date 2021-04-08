@@ -20,10 +20,10 @@ class Bootstrap
         \define('DOC_ROOT', $_SERVER['DOCUMENT_ROOT'].'/..');
         
         // 项目根目录
-        \define('APP_ROOT', DOC_ROOT.'/app/'.env('APP_NAME'));
+        \define('APP_ROOT', DOC_ROOT.'/app/'.\env('APP_NAME'));
 
         //时区
-        date_default_timezone_set(env('APP_TIMEZONE'));
+        \date_default_timezone_set(\env('APP_TIMEZONE'));
     }
 
 

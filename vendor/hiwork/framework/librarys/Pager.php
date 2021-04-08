@@ -40,22 +40,7 @@ class Pager
 
 	private $url;
 
-	// 取分页相关属性
-	public function __get($name){
-		return $this->PResult['page'][$name] ?? null;
-	}
-
-	public function result()
-	{
-		return $this->PResult;
-	}
-
-	public function rows()
-	{
-		return $this->PResult['rows'];
-	}
-
-
+	
 	public function __construct($show=8, $pageKey='page')
 	{
 		$this->show = $show;
@@ -65,6 +50,30 @@ class Pager
 
 	}
 
+	// 从分页中取出相关属性
+	public function __get($name){
+		return $this->PResult['page'][$name] ?? null;
+	}
+
+	
+	// 从分页中取出相关属性
+	public function __set($name, $val){
+		$this->PResult['page'][$name]=$val;
+	}
+
+	// 查询结果（数据+分页）
+	public function result()
+	{
+		return $this->PResult;
+	}
+
+	// 取数据rows 20210402162741
+	public function rows()
+	{
+		return $this->PResult['rows'];
+	}
+
+	// 用于返回结果
 	public function getResult($sql, $row=[], $rType='array')
 	{
 		$this->PResult = db()->P(
@@ -81,6 +90,7 @@ class Pager
 	}
 
 	// 生成页面url
+	// $page int 当前页码
 	public function url(int $page)
 	{
 		if(!$this->url){
@@ -106,12 +116,14 @@ class Pager
 	}
 
 
+	public function getErr(){
+		return db()->getErr();
+	}
 
 
 
 
 
-	
 
 	/*
 	 * 输出分页页码标签

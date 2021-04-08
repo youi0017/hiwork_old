@@ -8,7 +8,7 @@
 
 class Curl
 {
-	use \hw\Staticer;
+	use \hw\traits\Singlet;
 
 
 	// 取得受访用户IP 20201022123536
